@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard IT Harian</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .dark-mode {
+        background-color: #1a202c;
+        color: white;
+      }
+      .dark-mode #dashboardContainer {
+        background-color: #2d3748;
+        color: white;
+      }
+      .dark-mode iframe {
+        filter: invert(1) hue-rotate(180deg);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-white font-sans transition-colors duration-300">
+    <!-- Header -->
+    <header
+      class="bg-blue-700 text-white p-6 shadow-md text-center text-xl font-semibold"
+    >
+      Dashboard IT Harian - Laporan Kinerja & Analisis
+    </header>
+
+    <!-- Navbar -->
+    <nav
+      class="bg-gray-800 shadow-md py-3 px-6 flex justify-between items-center"
+    >
+      <h1 class="text-lg font-bold text-white">📊 IT Performance Dashboard</h1>
+      <div class="flex gap-4">
+        <button
+          id="darkModeToggle"
+          class="px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-600 transition"
+        >
+          🌙 Mode Gelap
+        </button>
+        <button
+          id="refreshReport"
+          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition"
+        >
+          🔄 Refresh Data
+        </button>
+      </div>
+    </nav>
+
+    <div class="min-h-screen flex flex-col items-center justify-center p-6">
+      <div
+        id="dashboardContainer"
+        class="bg-gray-800 shadow-xl rounded-lg p-6 w-full max-w-5xl transition-all text-white"
+      >
+        <h2 class="text-2xl font-bold text-white mb-4 text-center">
+          Laporan Harian IT
+        </h2>
+
+        <div class="flex justify-center mb-4">
+          <button
+            id="downloadReport"
+            class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition"
+          >
+            📥 Unduh Laporan
+          </button>
+        </div>
+
+        <div class="flex justify-center">
+          <iframe
+            id="powerBI"
+            title="Report Harian IT"
+            width="750"
+            height="500"
+            src="https://app.powerbi.com/view?r=eyJrIjoiZGEzOTllYWMtYTUwZS00M2Q1LWJlMzItMzYzODIxM2Q0NTUwIiwidCI6IjFkNTE2OWFjLWM3Y2ItNDI3NS05NzY0LWJmOGM5YzM2NGE0YyIsImMiOjEwfQ%3D%3D&embedImagePlaceholder=true"
+            frameborder="0"
+            allowfullscreen
+            class="rounded-lg shadow-lg"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center p-4 mt-6">
+      &copy; <span id="year"></span> IT Performance Dashboard | All Rights
+      Reserved
+    </footer>
+
+    <script>
+      // Set dynamic year in footer
+      document.getElementById("year").innerText = new Date().getFullYear();
+
+      // Toggle Dark Mode
+      document
+        .getElementById("darkModeToggle")
+        .addEventListener("click", function () {
+          document.body.classList.toggle("dark-mode");
+        });
+
+      // Refresh Power BI Report
+      document
+        .getElementById("refreshReport")
+        .addEventListener("click", function () {
+          document.getElementById("powerBI").src += "";
+          alert("Laporan telah diperbarui!");
+        });
+
+      // Download Report Placeholder
+      document
+        .getElementById("downloadReport")
+        .addEventListener("click", function () {
+          alert("Fitur unduh laporan akan segera tersedia!");
+        });
+    </script>
+  </body>
+</html>
